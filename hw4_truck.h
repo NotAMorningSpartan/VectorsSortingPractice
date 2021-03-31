@@ -1,5 +1,7 @@
 //Tyler Kness-Miller
 //hw4_truck.h
+#include "hw4_vehicle.h"
+
 class Truck: public Vehicle {
     private:
         string awd;
@@ -26,7 +28,7 @@ class Truck: public Vehicle {
             return towing_capacity;
         }
     public:
-        Truck(string awdrive, int towing, int yr, int mile, double val, string manu, string modl, int valuedate = 2021.25) {
+        Truck(string awdrive, int towing, int yr, int mile, double val, string manu, string modl, float valuedate = 2021.25) {
             setAwd(awdrive);
             setTowing_capacity(towing);
             setYear(yr);
