@@ -5,6 +5,7 @@ using namespace std;
 #include <iostream>
 #include <vector>
 #include <numeric>
+#include <algorithm>
 #include "hw4_truck.h"
 
 //Sources
@@ -13,6 +14,9 @@ using namespace std;
 //https://www.cars.com/vehicledetail/detail/841352374/overview/
 //https://www.cars.com/vehicledetail/detail/839793671/overview/
 //https://www.cars.com/vehicledetail/detail/840724755/overview/
+
+//A Note on the Directions:
+//When it asks to use the ternary if operator in the getName() truck method, I do not use this, as I fill the value no matter what, and include values such as RWD, 4WD, etc.
 
 int main(){
     vector<Truck> vec;
@@ -42,7 +46,24 @@ int main(){
     cout << "Current Value of all Trucks in five years: " << to_string(valueFive) << endl;
     cout << "This number is reduced as with our current model, the value of each truck is reduced by 15 percent with every year that passes." << endl;
 
-
+    cout << endl << "Trucks sorted alphabetically:" << endl;
+    //Sort by name alphabetically
+    auto sortAlpha = [](Truck& a, Truck& b) -> bool{
+        return a.getName() > b.getName();
+    };
+    sort(vec.begin(), vec.end(), sortAlpha);
+    for(int i = 0; i < vec.size(); i++){
+        vec[i].printTruck();
+    }
+    cout << endl << "Trucks sorted by mileage:" << endl;
+    //Sort by Mileage
+    auto sortMileage = [](Truck& a, Truck& b) -> bool{
+        return a.getMiles() > b.getMiles();
+    };
+    sort(vec.begin(), vec.end(), sortMileage);
+    for(int i = 0; i < vec.size(); i++){
+        vec[i].printTruck();
+    }
 
     return 0;
 }

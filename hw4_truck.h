@@ -47,4 +47,11 @@ class Truck: public Vehicle {
             setManufacturer("Chevrolet");
             setModel("Colorado");
         }
+        string getName(){
+            return to_string(getYear()) + " " + getManufacturer() + " " + getModel() + " " + getAwd();
+        }
+
+        void printTruck(){
+            cout << getName() << endl;
+        }
 };
