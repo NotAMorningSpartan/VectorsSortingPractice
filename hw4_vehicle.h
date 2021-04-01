@@ -32,7 +32,7 @@ class Vehicle {
         //Member method - Estimate Vehicle Value
         float estimateValue(float a){
             float val = value;
-            int b = 2021.34 - a;
+            int b = a - 2021.34;
             for (int i = 0; i < b; i++){
                 val = val * 0.85;
             }

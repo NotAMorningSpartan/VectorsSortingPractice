@@ -4,6 +4,7 @@
 using namespace std;
 #include <iostream>
 #include <vector>
+#include <numeric>
 #include "hw4_truck.h"
 
 //Sources
@@ -30,5 +31,18 @@ int main(){
     vec.push_back(Truck("4WD",8000,2017,12394,39808,"Ram","1500 Laramie",2021.33));
     vec.push_back(Truck("4WD",9000,2018,91341,43600,"GMC","Sierra 1500 Denali",2021.33));
 
+    float valueNow = accumulate(vec.begin(), vec.end(), 0.0, [](double i, Truck& b){
+        return i + b.getValue();
+    });
+    cout << "Current Value of all Trucks: " << to_string(valueNow) << endl;
 
+    float valueFive = accumulate(vec.begin(), vec.end(), 0.0, [](double i, Truck& b){
+        return i + b.estimateValue(2026.33);
+    });
+    cout << "Current Value of all Trucks in five years: " << to_string(valueFive) << endl;
+    cout << "This number is reduced as with our current model, the value of each truck is reduced by 15 percent with every year that passes." << endl;
+
+
+
+    return 0;
 }
